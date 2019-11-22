@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="QuoteCData" representedClassName="QuoteCData" syncable="YES">
+        <attribute name="available_supply" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="last_updated" optional="YES" attributeType="String"/>
+        <attribute name="market_cap_usd" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="percent_change_1h" optional="YES" attributeType="String"/>
+        <attribute name="percent_change_7d" optional="YES" attributeType="String"/>
+        <attribute name="percent_change_24h" optional="YES" attributeType="String"/>
+        <attribute name="price_btc" optional="YES" attributeType="String"/>
+        <attribute name="price_usd" optional="YES" attributeType="String"/>
+        <attribute name="rank" optional="YES" attributeType="String"/>
+        <attribute name="symbol" optional="YES" attributeType="String"/>
+        <attribute name="total_supply" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="QuoteCData" positionX="-63" positionY="-18" width="128" height="253"/>
+    </elements>
+</model>
