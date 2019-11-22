@@ -25,7 +25,7 @@ class SelectTableViewController: UITableViewController {
     var quoteProvider: QuoteProvider?
     //var : [Quote] = []
     //var from: QuoteProvider?
-    var fromOne: [Quote] = [] {
+    var fromOne: [QuoteRealSw] = [] {
            didSet {
                DispatchQueue.main.async {
                    self.tableView.reloadData()
@@ -44,16 +44,16 @@ class SelectTableViewController: UITableViewController {
              
     }
     
-       @objc func generateTableContent() {
-        if let quoteProvider = quoteProvider {
-            fromOne = quoteProvider.generateQuotes()
-          tableView.reloadData()
-        }
-        
-
-        
-
-    }
+//       @objc func generateTableContent() {
+//        if let quoteProvider = quoteProvider {
+//            fromOne = quoteProvider.generateQuotes()
+//          tableView.reloadData()
+//        }
+//        
+//
+//        
+//
+//    }
     @objc func loadQuotes(from server: String) {
         guard let url = URL(string: server) else { //why optional? -> мб некорректное имя сервера
             return
@@ -64,7 +64,7 @@ class SelectTableViewController: UITableViewController {
             if let data = data {//данные пришли - бинарные данные с сервера
                 //data -> (JSON -> Quote) //try - обработка исключений
              print(data)
-                if let fromOne = try? JSONDecoder().decode([Quote].self, from: data)
+                if let fromOne = try? JSONDecoder().decode([QuoteRealSw].self, from: data)
                  { //parse data->
                      print(fromOne)
                     self?.fromOne = fromOne
@@ -102,9 +102,9 @@ class SelectTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //           let selectedCurrency: Currency = Model.shared.currencies[indexPath.row]
         print("didSelectMethod was called")
-        let selectedQuote: Quote = fromOne[indexPath.row]
+        let selectedQuote: QuoteRealSw = fromOne[indexPath.row]
         
-        print(quoteCurrency)
+        print("")
                 if quoteCurrency == .from {
                     btnSetImageDelegate?.setBtnImage(image: UIImage(named: selectedQuote.id))
                     btnSetImageDelegate?.baseQuote = selectedQuote

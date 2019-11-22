@@ -11,21 +11,21 @@ import Foundation
 
 
 class Converter {
-    var baseQuote: Quote
-    
-    init(baseQuote: Quote) {
+    var baseQuote: QuoteRealSw
+
+    init(baseQuote: QuoteRealSw) {
         self.baseQuote = baseQuote
     }
-    
-    static func convertQuote(amount: Double, convertQuote: Quote, baseQuote: Quote)-> String{
+
+    static func convertQuote(amount: Double, convertQuote: QuoteRealSw, baseQuote: QuoteRealSw)-> String{
         let result = amount * Double(convertQuote.price_usd)! / Double(baseQuote.price_usd)!
         let string = String(format: "%.2f", result)
         return string
     }
-   static func convertBackQuote(amount: Double, convertQuote: Quote, baseQuote: Quote)-> String{
-       let result = amount * Double(convertQuote.price_usd)! / Double(baseQuote.price_usd)!
-       let string = String(format: "%.2f", result)
-       return string
-   }
-    
+//   static func convertBackQuote(amount: Double, convertQuote: Quote, baseQuote: Quote)-> String{
+//       let result = amount * Double(convertQuote.price_usd)! / Double(baseQuote.price_usd)!
+//       let string = String(format: "%.2f", result)
+//       return string
+//   }
+
 }

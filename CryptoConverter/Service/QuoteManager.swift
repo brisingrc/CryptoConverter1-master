@@ -34,7 +34,6 @@ class QuoteManager: Object{
                 quoteRealm.append($0)
                 print("added to quoteRealm")
             }
-           // self.tableViewController?.tableView.reloadData()
         } catch let error as NSError {
             print(error.localizedDescription)
         }

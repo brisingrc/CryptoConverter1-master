@@ -9,23 +9,23 @@
 import UIKit
 
 protocol ButtonImageDelegate {
-    var quote: Quote? { get set }
-    var baseQuote: Quote? {get set}
+    var quote: QuoteRealSw? { get set }
+    var baseQuote: QuoteRealSw? {get set}
     func setBtnImage(image: UIImage?)
     func setSecondImage(image: UIImage?)
 }
 
 class ConvertViewController: UIViewController, ButtonImageDelegate {
     var converter: Converter?
-    var quote: Quote?
-    var baseQuote: Quote?
+    var quote: QuoteRealSw?
+    var baseQuote: QuoteRealSw?
     
     func setSecondImage(image: UIImage?) {
         guard let image = image else { return }
         self.buttonTwo.setImage(image, for: .normal)
     }
     
-     //cell.imageView?.image = UIImage(named: quote.id)
+     
     func setBtnImage(image: UIImage?) {
         guard let image = image else { return }
         print("set image")

@@ -8,12 +8,9 @@
 
 import UIKit
 import NotificationCenter
-import CoreData
 import RealmSwift
 
 class FirstTableViewController: UITableViewController {
-    //var context: NSManagedObjectContext!
-  // var QuoteNew :[QuoteCData] = []
     enum Constants {
         static var isSecondLaunch = "isSecondLaunch"
     }
@@ -133,7 +130,6 @@ class FirstTableViewController: UITableViewController {
                        quoteDetail.quote = quote
                     
                    }
-                    //вытаскиваем конкретную котировку (модель) для ячейки
                }
            }
        }
