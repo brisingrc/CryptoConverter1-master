@@ -31,6 +31,7 @@ class FirstTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         //User defaults
               if UserDefaults.standard.bool(forKey: Constants.isSecondLaunch) == false {
                   print(" Первый запуск")
@@ -40,7 +41,7 @@ class FirstTableViewController: UITableViewController {
                   print("Не первый запуск")
               }
         
-        self.tableView.backgroundColor = UIColor.white
+
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(loadQuotes))
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
@@ -131,9 +132,9 @@ class FirstTableViewController: UITableViewController {
                }
            }
        }
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor.clear
-    }
+//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.backgroundColor = UIColor.clear
+//    }
     
     
 

@@ -98,14 +98,11 @@
         <!--Контакты-->
         <scene sceneID="MPN-uh-qk5">
             <objects>
-                <viewController id="1qi-Fv-W9q" sceneMemberID="viewController">
+                <viewController id="1qi-Fv-W9q" customClass="ContactViewController" customModule="CryptoConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZOE-v9-rFo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="hag-j9-Px2">
-                                <rect key="frame" x="16" y="67" width="343" height="216"/>
-                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w0g-y3-2AF">
                                 <rect key="frame" x="50" y="293" width="249" height="63"/>
                                 <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -134,23 +131,31 @@
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="hag-j9-Px2">
+                                <rect key="frame" x="74" y="65" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="dD9-83-RNk"/>
+                                    <constraint firstAttribute="height" constant="200" id="gXF-XS-bm9"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="w0g-y3-2AF" firstAttribute="leading" secondItem="z5M-Wt-f2G" secondAttribute="leading" constant="50" id="3wv-W6-Kv0"/>
-                            <constraint firstItem="w0g-y3-2AF" firstAttribute="top" secondItem="hag-j9-Px2" secondAttribute="bottom" constant="10" id="I8i-9X-hCD"/>
-                            <constraint firstItem="z5M-Wt-f2G" firstAttribute="trailing" secondItem="hag-j9-Px2" secondAttribute="trailing" constant="16" id="Id6-Lt-vjK"/>
                             <constraint firstItem="z5M-Wt-f2G" firstAttribute="trailing" secondItem="VdN-TU-Pzd" secondAttribute="trailing" constant="83" id="KEb-eh-ogV"/>
+                            <constraint firstItem="hag-j9-Px2" firstAttribute="leading" secondItem="z5M-Wt-f2G" secondAttribute="leading" constant="74" id="LKf-6Z-He1"/>
                             <constraint firstItem="z5M-Wt-f2G" firstAttribute="trailing" secondItem="w0g-y3-2AF" secondAttribute="trailing" constant="76" id="M58-Ju-YOn"/>
-                            <constraint firstItem="hag-j9-Px2" firstAttribute="leading" secondItem="z5M-Wt-f2G" secondAttribute="leading" constant="16" id="Xz8-Sf-gNj"/>
-                            <constraint firstItem="z5M-Wt-f2G" firstAttribute="bottom" secondItem="hag-j9-Px2" secondAttribute="bottom" constant="335" id="kt2-se-BoX"/>
+                            <constraint firstItem="w0g-y3-2AF" firstAttribute="top" secondItem="z5M-Wt-f2G" secondAttribute="top" constant="293" id="Mju-ib-H9R"/>
+                            <constraint firstItem="hag-j9-Px2" firstAttribute="top" secondItem="z5M-Wt-f2G" secondAttribute="top" constant="65" id="Svd-Eh-zfi"/>
                             <constraint firstItem="VdN-TU-Pzd" firstAttribute="leading" secondItem="z5M-Wt-f2G" secondAttribute="leading" constant="83" id="lCs-lq-8Go"/>
                             <constraint firstItem="z5M-Wt-f2G" firstAttribute="bottom" secondItem="VdN-TU-Pzd" secondAttribute="bottom" constant="87" id="nSj-e2-DIa"/>
-                            <constraint firstItem="hag-j9-Px2" firstAttribute="top" secondItem="z5M-Wt-f2G" secondAttribute="top" constant="67" id="q8O-Ty-iZT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z5M-Wt-f2G"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Контакты" image="tab3" id="yFa-jY-O4d"/>
+                    <connections>
+                        <outlet property="myImage" destination="hag-j9-Px2" id="Cfw-NG-hOQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asa-D4-bTu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -436,6 +441,7 @@
         <!--Криптовалюты-->
         <scene sceneID="Nwo-JK-6Ve">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7dy-Wg-FNO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController title="Криптовалюты" automaticallyAdjustsScrollViewInsets="NO" id="Wze-gK-4Lq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Quotes" image="tab1" selectedImage="tab1" id="h7m-RV-BVN"/>
                     <toolbarItems/>
@@ -449,7 +455,6 @@
                         <segue destination="UGZ-vF-j8H" kind="relationship" relationship="rootViewController" id="hjp-qh-UHY"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7dy-Wg-FNO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1328.8" y="13.943028485757123"/>
         </scene>

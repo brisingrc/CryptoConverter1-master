@@ -34,6 +34,7 @@ class SelectTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
        quoteProvider = QuoteProvider()
               NotificationCenter.default.addObserver(self, selector: #selector(loadQuotes), name: .init("tableDataSource"), object: nil)
               loadQuotes()

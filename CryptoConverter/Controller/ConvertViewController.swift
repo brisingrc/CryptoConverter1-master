@@ -71,6 +71,7 @@ class ConvertViewController: UIViewController, ButtonImageDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         title = "Конвертировать"
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -86,7 +87,7 @@ extension UIButton {
         pulse.fromValue = 0.9
         pulse.toValue = 1.0
         pulse.autoreverses = true
-        pulse.repeatCount = 3
+        pulse.repeatCount = 2
         pulse.initialVelocity = 0.5
         pulse.damping = 1
         layer.add(pulse, forKey: nil)
