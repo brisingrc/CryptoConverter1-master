@@ -9,7 +9,7 @@
 import UIKit
 
 protocol array {
-    func dataTransfer(array:Quote)
+    func dataTransfer(array:QuoteRealSw)
 }
 
 enum QuotesSelected {
@@ -20,18 +20,14 @@ class SelectTableViewController: UITableViewController {
     
     var btnSetImageDelegate: ButtonImageDelegate?
     var address = "https://api.coinmarketcap.com/v1/ticker"
-    
     var quoteCurrency: QuotesSelected = .from
     var quoteProvider: QuoteProvider?
-    //var : [Quote] = []
-    //var from: QuoteProvider?
+    
     var fromOne: [QuoteRealSw] = [] {
            didSet {
                DispatchQueue.main.async {
                    self.tableView.reloadData()
-                   
                }
-              
            }
        }
     
@@ -40,22 +36,13 @@ class SelectTableViewController: UITableViewController {
         
        quoteProvider = QuoteProvider()
               NotificationCenter.default.addObserver(self, selector: #selector(loadQuotes), name: .init("tableDataSource"), object: nil)
-              loadQuotes(from: address)
+              loadQuotes()
              
     }
     
-//       @objc func generateTableContent() {
-//        if let quoteProvider = quoteProvider {
-//            fromOne = quoteProvider.generateQuotes()
-//          tableView.reloadData()
-//        }
-//        
-//
-//        
-//
-//    }
-    @objc func loadQuotes(from server: String) {
-        guard let url = URL(string: server) else { //why optional? -> мб некорректное имя сервера
+
+    @objc func loadQuotes() {
+        guard let url = URL(string: address) else { //why optional? -> мб некорректное имя сервера
             return
         }//completionHandler = closure = функция которая передается как параметр
         let dataTask = URLSession.shared.dataTask(with: url) {
@@ -92,15 +79,15 @@ class SelectTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath) as! SelectTableViewCell
 
          let quote = fromOne[indexPath.row]
-        cell.symbolLabel.text = quote.symbol
+        cell.symbolLabel.text = quote.name
          cell.imageView?.image = UIImage(named: quote.id)
-         //cell.imageView?.image = quote.image
+         
          
          
          return cell
      }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//           let selectedCurrency: Currency = Model.shared.currencies[indexPath.row]
+
         print("didSelectMethod was called")
         let selectedQuote: QuoteRealSw = fromOne[indexPath.row]
         
@@ -112,7 +99,7 @@ class SelectTableViewController: UITableViewController {
         }
         if quoteCurrency == .to {
                   btnSetImageDelegate?.setSecondImage(image: UIImage(named: selectedQuote.id))
-            btnSetImageDelegate?.quote = selectedQuote
+                  btnSetImageDelegate?.quote = selectedQuote
               }
 
            dismiss(animated: true, completion: nil)

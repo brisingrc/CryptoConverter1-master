@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AudioToolbox
 
 protocol ButtonImageDelegate {
     var quote: QuoteRealSw? { get set }
@@ -44,19 +46,21 @@ class ConvertViewController: UIViewController, ButtonImageDelegate {
         guard let quote = quote, let baseQuote = baseQuote else { return }
         text2.text = Converter.convertQuote(amount: amount ?? 0, convertQuote: quote, baseQuote: baseQuote )
     }
-    @IBAction func textActionTwo(_ sender: Any) {
-       
-        
-    }
     
-    @IBAction func pushOne(_ sender: Any) {
+    
+    @IBAction func pushOne(_ sender:  UIButton) {
+        AudioServicesPlaySystemSound(SystemSoundID(1113))
+        sender.pulsate()
+      
         let ns = storyboard?.instantiateViewController(withIdentifier: "selectedCurrencyNSID") as! SelectTableViewController
         ns.quoteCurrency = .from
         ns.btnSetImageDelegate = self
                   present(ns, animated: true, completion: nil)
 
     }
-    @IBAction func pushTwo(_ sender: Any) {
+    @IBAction func pushTwo(_ sender: UIButton) {
+        AudioServicesPlaySystemSound(SystemSoundID(1113))
+        sender.pulsate()
         let ns = storyboard?.instantiateViewController(withIdentifier: "selectedCurrencyNSID") as! SelectTableViewController
         ns.quoteCurrency = .to
         ns.btnSetImageDelegate = self
@@ -67,10 +71,25 @@ class ConvertViewController: UIViewController, ButtonImageDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Конвертировать"
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
  
+}
+
+extension UIButton {
+    func pulsate(){
+        let pulse = CASpringAnimation(keyPath: "transform.scale")
+        pulse.duration = 0.6
+        pulse.fromValue = 0.9
+        pulse.toValue = 1.0
+        pulse.autoreverses = true
+        pulse.repeatCount = 3
+        pulse.initialVelocity = 0.5
+        pulse.damping = 1
+        layer.add(pulse, forKey: nil)
+    }
+    
 }

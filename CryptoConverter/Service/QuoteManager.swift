@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class QuoteManager: Object{
+class QuoteManager{
    static func saveQuote(quote:QuoteRealSw){
         do {
             let realm = try Realm()
@@ -30,8 +30,8 @@ class QuoteManager: Object{
             let realm = try Realm()
             print("read try")
             let result = realm.objects(QuoteRealSw.self)
-            result.forEach { QuoteRealSw(value: $0)
-                quoteRealm.append($0)
+            result.forEach { item in
+                quoteRealm.append(item)
                 print("added to quoteRealm")
             }
         } catch let error as NSError {

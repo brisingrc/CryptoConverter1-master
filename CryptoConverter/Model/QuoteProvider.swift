@@ -14,7 +14,7 @@ class QuoteProvider {
     var timer: Timer?
 
     init() {
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateTimer), userInfo: self, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(updateTimer), userInfo: self, repeats: true)
     }
     @objc func updateTimer() {
         NotificationCenter.default.post(name: .init("tableDataSource") , object: nil)

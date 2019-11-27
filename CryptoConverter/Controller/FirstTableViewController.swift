@@ -9,6 +9,8 @@
 import UIKit
 import NotificationCenter
 import RealmSwift
+import SwipeCellKit
+
 
 class FirstTableViewController: UITableViewController {
     enum Constants {
@@ -26,13 +28,6 @@ class FirstTableViewController: UITableViewController {
         }
     }
     
-//    @IBAction func refAction(_ sender: Any) {
-//        //generateTableContent()
-//        loadQuotes()
-//    }
-//    @IBOutlet weak var refreshButton: UIBarButtonItem!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,16 +40,18 @@ class FirstTableViewController: UITableViewController {
                   print("Не первый запуск")
               }
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(loadQuotes))
+        self.tableView.backgroundColor = UIColor.white
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(loadQuotes))
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
         tableView.refreshControl = refresh
         tableView.refreshControl?.addTarget(self, action: #selector(loadQuotes), for: .valueChanged)
         quoteProvider = QuoteProvider()
         NotificationCenter.default.addObserver(self, selector: #selector(loadQuotes), name: .init("tableDataSource"), object: nil)
        getDataFromRealm()
-        //loadQuotes()
+       title = "Криптовалюты"
     }
-    
+
 
     
     // работа с сетью
@@ -109,11 +106,12 @@ class FirstTableViewController: UITableViewController {
 
         let quote = quotes[indexPath.row]
         cell.nameLabel.text = quote.name
-        //cell.priceLabel.text = "\(quote.price_usd) $"
-        cell.priceLabel.text = quote.price_usd //String(format: "%.2f", quote.price_usd)
+        
+        cell.priceLabel.text = quote.price_usd
         cell.symbolLabel.text = quote.symbol
         cell.imageView?.image = UIImage(named: quote.id)
-       // cell.imageView?.image = quote.image
+        cell.delegate = self
+       
         
         
         return cell
@@ -133,7 +131,26 @@ class FirstTableViewController: UITableViewController {
                }
            }
        }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
+    }
+    
     
 
     
+}
+
+
+extension FirstTableViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+
+        let deleteAction = SwipeAction(style: .destructive,
+                                       title: "Delete") { (action, indexPath) in
+                                        self.quotes.remove(at: indexPath.row)
+                                        self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        
+ 
+        return [deleteAction]
+    }
 }

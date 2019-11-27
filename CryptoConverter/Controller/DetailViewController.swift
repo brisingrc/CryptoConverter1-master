@@ -36,21 +36,25 @@ updateUI()
 
 }
 
-
-
 extension DetailViewController {
     func updateUI()  {
         if let quote = quote {
-                   //nameLabel.text = "\(quote.name)"
-            nameLabelTwo.text = "name: \(quote.name)"
+        nameLabelTwo.text = "name: \(quote.name)"
             title = quote.name
-            //imageView.image = quote.image
             symbolLabel.text = "Symbol: \(quote.symbol)"
             priceLabel.text = "Price: \(quote.price_usd) $"
             marketLabel.text = "Market cap usd: \(quote.market_cap_usd)"
-            //supplyLabel.text = "Available supply: \(quote.max_supply)"
+           supplyLabel.text = "Available supply: \(quote.total_supply)"
+            
            percentLabel.text = "percent change 7d: \(quote.percent_change_7d)"
-            lastUpdated.text = "last updated \(quote.last_updated)"
+            
+            let df = DateFormatter()
+                   df.dateFormat = "dd.MM.yyyy"
+            let date = Date(timeIntervalSince1970: Double(quote.last_updated)!)
+            let newDate = df.string(from: date)
+            lastUpdated.text = "last updated \(newDate)"
+            
+            
             imageView?.image = UIImage(named: quote.id)
                }
         
