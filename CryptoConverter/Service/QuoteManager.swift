@@ -24,15 +24,15 @@ class QuoteManager{
     }
     
    static func readFromRealm() -> [QuoteRealSw] {
-        print("read from Realm")
+        //print("read from Realm")
         var quoteRealm : [QuoteRealSw] = []
         do {
             let realm = try Realm()
-            print("read try")
+           // print("read try")
             let result = realm.objects(QuoteRealSw.self)
             result.forEach { item in
                 quoteRealm.append(item)
-                print("added to quoteRealm")
+                //print("added to quoteRealm")
             }
         } catch let error as NSError {
             print(error.localizedDescription)

@@ -13,10 +13,12 @@ class QuoteCell: SwipeTableViewCell  {
 
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var ImageOutlet: UIImageView!
+    
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var symbolLabel: UILabel!
     
     
-    @IBOutlet weak var percent_change_7dLabel: UILabel!
+
 
 }

@@ -21,10 +21,10 @@ class QuoteFetchManager {
             guard let statusCode = response.response?.statusCode else { return }
             if (200...300).contains(statusCode) {
                 guard let data = response.data else { return }
-                print(data)
+                //print(data)
                 if let quotes = try? JSONDecoder().decode([QuoteRealSw].self, from: data)
                 {
-                        print(quotes)
+                        //print(quotes)
                         completionHandler(quotes)
                     
                 }

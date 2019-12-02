@@ -30,8 +30,11 @@ class ConvertViewController: UIViewController, ButtonImageDelegate {
      
     func setBtnImage(image: UIImage?) {
         guard let image = image else { return }
-        print("set image")
+       // print("set image")
         self.buttonOne.setImage(image, for: .normal)
+        
+        
+        
     }
     
     @IBOutlet weak var buttonOne: UIButton!
@@ -56,7 +59,9 @@ class ConvertViewController: UIViewController, ButtonImageDelegate {
         ns.quoteCurrency = .from
         ns.btnSetImageDelegate = self
                   present(ns, animated: true, completion: nil)
-
+        
+        text1.text = ""
+        text2.text = ""
     }
     @IBAction func pushTwo(_ sender: UIButton) {
         AudioServicesPlaySystemSound(SystemSoundID(1113))

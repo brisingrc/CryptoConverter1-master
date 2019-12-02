@@ -51,10 +51,10 @@ class SelectTableViewController: UITableViewController {
             (data, response, error) in
             if let data = data {//данные пришли - бинарные данные с сервера
                 //data -> (JSON -> Quote) //try - обработка исключений
-             print(data)
+             //print(data)
                 if let fromOne = try? JSONDecoder().decode([QuoteRealSw].self, from: data)
                  { //parse data->
-                     print(fromOne)
+                     //print(fromOne)
                     self?.fromOne = fromOne
                 }
              
@@ -81,7 +81,7 @@ class SelectTableViewController: UITableViewController {
 
          let quote = fromOne[indexPath.row]
         cell.symbolLabel.text = quote.name
-         cell.imageView?.image = UIImage(named: quote.id)
+         cell.imageQuote.image = UIImage(named: quote.id)
          
          
          
@@ -89,13 +89,14 @@ class SelectTableViewController: UITableViewController {
      }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        print("didSelectMethod was called")
+       // print("didSelectMethod was called")
         let selectedQuote: QuoteRealSw = fromOne[indexPath.row]
         
-        print("")
+       // print("")
                 if quoteCurrency == .from {
                     btnSetImageDelegate?.setBtnImage(image: UIImage(named: selectedQuote.id))
                     btnSetImageDelegate?.baseQuote = selectedQuote
+                    
             
         }
         if quoteCurrency == .to {

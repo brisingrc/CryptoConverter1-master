@@ -57,7 +57,7 @@ class FirstTableViewController: UITableViewController {
     
     // работа с сетью
     @objc func loadQuotes() {
-        print("Method loadQoutes was called")
+       // print("Method loadQoutes was called")
             QuoteFetchManager.shared.fetchQuotes(url: address) { [weak self] quotes in
                        guard let self = self else { return }
                        self.quotes = quotes
@@ -74,7 +74,7 @@ class FirstTableViewController: UITableViewController {
     func getDataFromRealm() {
         let quotes = QuoteManager.readFromRealm()
         if quotes.isEmpty {
-            print("isEmpty")
+            //print("isEmpty")
             QuoteFetchManager.shared.fetchQuotes(url: address) { [weak self] quotes in
                        guard let self = self else { return }
                        self.quotes = quotes
@@ -87,7 +87,7 @@ class FirstTableViewController: UITableViewController {
             }
         } else {
             self.quotes = quotes
-             print("NOtisEmpty")
+            // print("NOtisEmpty")
             
         }
         
@@ -110,7 +110,7 @@ class FirstTableViewController: UITableViewController {
         
         cell.priceLabel.text = quote.price_usd
         cell.symbolLabel.text = quote.symbol
-        cell.imageView?.image = UIImage(named: quote.id)
+        cell.ImageOutlet.image = UIImage(named: quote.id)
         cell.delegate = self
        
         
@@ -132,9 +132,7 @@ class FirstTableViewController: UITableViewController {
                }
            }
        }
-//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        cell.backgroundColor = UIColor.clear
-//    }
+
     
     
 
